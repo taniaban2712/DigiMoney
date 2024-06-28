@@ -21,12 +21,12 @@ const AuthForm = ({type}:{type:string}) => {
     const router=useRouter();
     const [user, setUser]=useState(null)
     const [isLoading, setIsLoading]=useState(false)
+    
     const formSchema=authFormSchema(type)
     //defining the form
     const form=useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues:{
-            username: "",
             email:"",
             password: "",
         },
@@ -45,9 +45,9 @@ const AuthForm = ({type}:{type:string}) => {
                  const response= await signIn({ 
                      email: data.email,
                      password: data.password,
-                     username: data.username,}
-                 )
-               if(response) router.push('/')
+                    })
+                    console.log(response)
+                if(response) router.push('/')
             }
         }
         catch(error){
@@ -101,7 +101,7 @@ const AuthForm = ({type}:{type:string}) => {
                                <CustomInput control={form.control} name='dateOfBirth' label='Date Of Birth' placeholder={'DD/MM/YYYY'}/>
                             </>
                         )}
-                      <CustomInput control={form.control} name='username' label='Username' placeholder={'Enter your username'}/>
+                      
                       <CustomInput control={form.control} name='email' label='Email' placeholder={'Enter your email'}/>
                       <CustomInput control={form.control} name='password' label='Password' placeholder={'Enter Password'}/>
                      <div className='flex flex-col gap-4'> 

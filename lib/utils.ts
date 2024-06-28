@@ -197,9 +197,7 @@ export const getTransactionStatus = (date: Date) => {
 
 
 export const authFormSchema=(type:string)=> z.object({
-  username: z.string().min(2, {
-      message: "Username must be at least 2 characters.",
-  }),
+  
   email: z.string().email(),
   password: z.string().min(8),
   firstName: type==='sign-in'? z.string().optional(): z.string().min(3),
@@ -208,5 +206,5 @@ export const authFormSchema=(type:string)=> z.object({
   city: type === 'sign-in'?z.string().optional(): z.string().min(3),
   state: type==='sign-in'? z.string().optional(): z.string().min(3),
   postalCode: type==='sign-in'? z.string().optional(): z.string().min(6),
-  dateOfBirth: type==='sign-in'? z.string().optional(): z.string().datetime()
+  dateOfBirth: type==='sign-in'? z.string().optional(): z.string(),
 })

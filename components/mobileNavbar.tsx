@@ -7,6 +7,7 @@ import React from 'react'
 import { sidebarLinks } from '../constants'
 import { cn } from '../lib/utils'
 import { usePathname } from 'next/navigation'
+import Footer from './footer';
 
 const MobileNavbar = ({user}:MobileNavProps) => {
     const pathName= usePathname()
@@ -41,7 +42,7 @@ const MobileNavbar = ({user}:MobileNavProps) => {
                     USER
                     </nav>
                 </SheetClose>
-                FOOTER
+                <Footer user={user} type="mobile"/>
             </div>
             
         </nav>
